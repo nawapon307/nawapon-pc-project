@@ -1,16 +1,266 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>My Scratch Project</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nawapon PC Project's</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #0b0b0f;
+  --glass: rgba(255,255,255,0.08);
+  --border: rgba(255,255,255,0.15);
+  --text: #ffffff;
+  --muted: #b5b5b5;
+  --accent: #4da3ff;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  background: radial-gradient(circle at top, #111 0%, var(--bg) 60%);
+  color: var(--text);
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* SIDEBAR */
+.sidebar {
+  width: 260px;
+  background: var(--glass);
+  backdrop-filter: blur(25px);
+  border-right: 1px solid var(--border);
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.logo {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 40px;
+}
+
+.tab {
+  padding: 14px 18px;
+  border-radius: 14px;
+  color: var(--muted);
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.tab:hover {
+  background: rgba(255,255,255,0.08);
+  color: var(--text);
+}
+
+.tab.active {
+  background: linear-gradient(135deg, #5fb3ff, #357dff);
+  color: white;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
+
+/* MAIN */
+.main {
+  flex: 1;
+  overflow-y: auto;
+}
+
+/* CONTENT */
+.content {
+  display: none;
+  padding: 80px;
+  animation: fade 0.4s ease;
+}
+
+.content.active {
+  display: block;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+h1 {
+  font-size: 56px;
+  font-weight: 800;
+}
+
+h2 {
+  margin-top: 50px;
+  font-size: 28px;
+}
+
+p {
+  color: var(--muted);
+  margin-top: 20px;
+  max-width: 680px;
+  font-size: 18px;
+}
+
+/* CARDS */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+  margin-top: 40px;
+}
+
+.card {
+  padding: 32px;
+  border-radius: 24px;
+  background: var(--glass);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(20px);
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+}
+
+/* MOBILE */
+@media (max-width: 900px) {
+  body {
+    flex-direction: column;
+  }
+  .sidebar {
+    width: 100%;
+    flex-direction: row;
+    overflow-x: auto;
+  }
+  .tab {
+    white-space: nowrap;
+  }
+}
+</style>
 </head>
+
 <body>
 
-    <!-- HEADER / MENU -->
-    <header>
-        <h1>🚀 My Project</h1>
+<div class="sidebar">
+  <div class="logo">Nawapon PC Project's</div>
+  <div class="tab active" data-tab="overview">🖥 Overview</div>
+  <div class="tab" data-tab="specs">⚙ Specs</div>
+  <div class="tab" data-tab="performance">🚀 Performance</div>
+  <div class="tab" data-tab="upgrade">🔧 Upgrades</div>
+</div>
 
-        <nav>
-            <ul>
-                <li>🏠 <a href="#home">Home</a></li>
-                <
+<div class="main">
+
+  <!-- OVERVIEW -->
+  <div class="content active" id="overview">
+    <h1>My Build</h1>
+    <p>
+      A clean, powerful PC build designed for performance, stability, and value.
+      Built to handle gaming, productivity, and daily use with style.
+    </p>
+
+    <div class="cards">
+      <div class="card">
+        <h3>⚡ Reliable Power</h3>
+        <p>Xeon E3-1240 delivers workstation-grade stability.</p>
+      </div>
+      <div class="card">
+        <h3>🎮 Solid Gaming</h3>
+        <p>GTX 1070 handles 1080p gaming smoothly.</p>
+      </div>
+      <div class="card">
+        <h3>🚀 Fast Storage</h3>
+        <p>480GB SSD for quick boot and load times.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SPECS -->
+  <div class="content" id="specs">
+    <h1>Specifications</h1>
+    <div class="cards">
+      <div class="card"><h3>CPU</h3><p>Intel Xeon E3-1240</p></div>
+      <div class="card"><h3>Memory</h3><p>16GB DDR3 RAM</p></div>
+      <div class="card"><h3>Storage</h3><p>480GB SSD</p></div>
+      <div class="card"><h3>Graphics</h3><p>NVIDIA GTX 1070</p></div>
+    </div>
+  </div>
+
+  <!-- PERFORMANCE -->
+  <div class="content" id="performance">
+    <h1>Performance</h1>
+    <p>
+      Optimized for smooth multitasking, esports titles, and creative workloads.
+    </p>
+
+    <div class="cards">
+      <div class="card">
+        <h3>🎮 Gaming</h3>
+        <p>1080p high settings in most competitive games.</p>
+      </div>
+      <div class="card">
+        <h3>🧠 Productivity</h3>
+        <p>Excellent for coding, editing, and multitasking.</p>
+      </div>
+      <div class="card">
+        <h3>❄ Thermals</h3>
+        <p>Stable temps with proper airflow.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- UPGRADES -->
+  <div class="content" id="upgrade">
+    <h1>Future Upgrades</h1>
+    <p>
+      Planned improvements to push this build even further.
+    </p>
+
+    <div class="cards">
+      <div class="card">
+        <h3>⬆ GPU</h3>
+        <p>Upgrade to RTX series when possible.</p>
+      </div>
+      <div class="card">
+        <h3>💾 Storage</h3>
+        <p>Add NVMe or secondary SSD.</p>
+      </div>
+      <div class="card">
+        <h3>🧊 Cooling</h3>
+        <p>Improved airflow or AIO cooler.</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+const tabs = document.querySelectorAll('.tab');
+const contents = document.querySelectorAll('.content');
+
+tabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    tabs.forEach(t => t.classList.remove('active'));
+    contents.forEach(c => c.classList.remove('active'));
+
+    tab.classList.add('active');
+    document.getElementById(tab.dataset.tab).classList.add('active');
+  });
+});
+</script>
+
+</body>
+</html>
